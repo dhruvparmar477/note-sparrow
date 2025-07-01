@@ -1,0 +1,217 @@
+/* ⚡ HARRY POTTER THEME - Inspired by Hogwarts */
+
+/* GLOBAL STYLES */
+
+
+body {
+    background: url('https://www.toptal.com/designers/subtlepatterns/uploads/aged_paper.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+
+/* SIDEBAR - Think of it as a Hogwarts common room */
+.sidebar {
+    background: url('https://www.transparenttextures.com/patterns/dark-wood.png'); /* Dark oak wood */
+    color: #f5e1a4; /* Ancient book pages */
+    border-right: 5px solid #7d5a3a; /* Aged leather */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar h2 {
+    color: #d4a74b; /* Gold engravings */
+    font-family: 'Almendra SC', serif; 
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* LIST ITEMS */
+.sidebar ul li {
+    background: #32261e; /* Dark Hogwarts wood */
+    color: #e0c097;
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid #7d5a3a;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.sidebar ul li:hover {
+    background: linear-gradient(to right, #960000, #560000); /* Gryffindor Magic Glow */
+    color: #f5e1a4;
+    transform: translateX(8px);
+    box-shadow: 0px 0px 15px rgba(212, 167, 75, 0.5);
+}
+
+header {
+    background: linear-gradient(to right, #1f1c1a, #3b2f2f); /* Dark castle stone */
+    color: #e3c887;
+    border-bottom: 5px solid #7d5a3a; /* Aged spellbook edges */
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* SEARCH BAR - Like looking into the Pensieve */
+.search-bar {
+    background: #564d4a; /* Aged scrolls */
+    color: #f5e1a4;
+    border: 2px solid #8b5a2b;
+    padding: 10px;
+    font-family: 'Almendra', serif;
+}
+
+.search-bar:hover, 
+.search-bar:focus {
+    background: #6d5c52; /* Aged scrolls but glowing */
+    box-shadow: 0 0 15px rgba(212, 167, 75, 0.4);
+}
+
+/* BUTTONS - Enchanted golden buttons */
+.create-note-btn {
+    background: linear-gradient(to bottom, #d4a74b, #b78a3a); /* Golden enchanted book covers */
+    color: #32261e;
+    font-weight: bold;
+    padding: 12px;
+    border: 3px solid #7d5a3a;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.create-note-btn:hover {
+    background: #8b5a2b; /* Aged magical gold */
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(212, 167, 75, 0.8);
+}
+
+/* DOCUMENT CARD - Like pages in the Restricted Section */
+.document-card {
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent darkness */
+    color: #f5e1a4;
+    border: 2px solid #7d5a3a;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.document-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(212, 167, 75, 1);
+}
+
+/* NOTE CONTAINER - Like opening the Marauder’s Map */
+.note-container {
+    background: url('https://www.transparenttextures.com/patterns/paper.png');
+    color: #f5e1a4;
+    border: 3px solid #7d5a3a;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* NOTE TITLE - Looks like an ancient spell inscription */
+.note-title {
+    color: #f5e1a4;
+    border-bottom: 2px solid #d4a74b;
+    font-family: 'Harry P', cursive; /* You need to add this font */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* NOTE CONTENT */
+.note-content {
+    background: #665a57;
+    color: #f5e1a4;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+/* TAGS - House colors */
+.green { background: #1a472a; color: #c1a23e; } /* Slytherin */
+.blue { background: #0e1a40; color: #946b2d; } /* Ravenclaw */
+.red { background: #740001; color: #d3a625; } /* Gryffindor */
+.yellow { background: #ecb939; color: #726255; } /* Hufflepuff */
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .document-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@keyframes candleGlow {
+    0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+    100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+}
+
+.note-title {
+    animation: candleGlow 2s infinite alternate ease-in-out;
+    color: #f5e1a4; /* Candlelight gold */
+    font-size: 24px;
+    font-family: 'Cinzel Decorative', serif;
+    text-align: center;
+}
+
+/* Light Mode Styles (Royal Theme) */
+body.light-mode {
+    background-color: #f5f0e1;  /* Light cream background */
+    color: #222;  /* Dark text for readability */
+}
+
+body.light-mode .auth-container {
+    background: #fff8e7; /* Light royal golden */
+    color: #222;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode input {
+    background: #fdf6e3; /* Light golden cream */
+    border: 1px solid #bfa76f; /* Royal gold border */
+    color: #222;
+}
+
+body.light-mode input:focus {
+    border-color: #c29a50; /* Slightly darker royal gold */
+}
+
+body.light-mode button {
+    background: #bfa76f; /* Royal gold */
+    color: white;
+}
+
+body.light-mode button:hover {
+    background: #a88a4c; /* Darker shade for hover */
+}
+
+/* Light mode background */
+body.light-mode {
+    background-color: #F5EEDC; /* A royal cream color */
+    color: #4B3621; /* Dark brown text */
+}
+
+/* Fix the title text */
+body.light-mode h1, 
+body.light-mode h2 {
+    color: #9C6B3D; /* Rich golden brown */
+}
+
+/* Fix the note container */
+body.light-mode .note-container {
+    background-color: #FDF6E3; /* Softer cream */
+    border: 2px solid #9C6B3D;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix input fields */
+body.light-mode input, 
+body.light-mode textarea {
+    background-color: #FAEED1;
+    color: #4B3621;
+    border: 1px solid #9C6B3D;
+}
+
+/* Fix th

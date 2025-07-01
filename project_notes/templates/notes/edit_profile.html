@@ -1,0 +1,26 @@
+{% extends 'notes/common/layout_without_header.html' %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/css/auth2.css' %}">
+{% endblock %}
+{% block content %}
+<body>
+
+    <div class="auth-container">
+        <h2>Edit Profile</h2>
+        {% for message in messages %}
+            <!-- <p class="error">{{ message }}</p> -->
+        {% endfor %}
+
+        <form method="POST" action="{% url 'update_profile' %}">
+            {% csrf_token %}
+            <input type="text" name="fname" placeholder="First Name" value="{{ user.first_name }}" required>
+            <input type="text" name="lname" placeholder="Last Name" value="{{ user.last_name }}" required>
+            <input type="text" name="email" placeholder="Enter Email" value="{{ user.email }}" required>
+            <input type="text" name="contact" placeholder="Enter Contact" value="{{ profile.contact }}" required>
+
+            <input type="text" name="username" placeholder="Enter Username" value="{{ user.username }}" required>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+{% endblock %}

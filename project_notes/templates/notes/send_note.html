@@ -1,0 +1,85 @@
+{% extends 'notes/common/layout.html' %}
+
+{% block content %}
+<style>
+    .note-container {
+        background: #1E1E1E;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .note-title {
+        color: #4CAF50;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .note-date {
+        color: #bbb;
+        margin-bottom: 20px;
+    }
+
+    .form-input {
+        width: 80%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background: #333;
+        color: white;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .btn-send {
+        background: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .btn-send:hover {
+        background: #66BB6A;
+    }
+
+    .btn-cancel {
+        background: #FF5252;
+        color: white;
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+    .btn-cancel:hover {
+        background: #FF6B6B;
+    }
+</style>
+<div class="main-content">
+    <div class="note-container">
+        <h2 class="note-title">📨 Send Note</h2>
+        <p class="note-date">Sending: <strong>{{ note.title }}</strong></p>
+
+        <!-- ✅ Send Note Form -->
+        <form method="POST" action="{% url 'send_note' note.pk %}" style="display: flex;flex-direction: column; align-items: center; gap: 15px;">
+            {% csrf_token %}
+            <label for="receiver">Enter Username:</label>
+            <input type="text" name="receiver" placeholder="Enter recipient's username..." required class="form-input">
+            <button type="submit" class="btn btn-send">📩 Send Note</button>
+        </form>
+
+        <a href="{% url 'note_detail' note.pk %}" class="btn btn-cancel">❌ Cancel</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'notes/common/layout.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Manager</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/css/index_style.css' %}">
+    <script src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-KIT.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+    
+    <!-- Sidebar Navigation -->
+    {% block content %}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="filters">
+            <button class="filter-btn">Tags</button>
+            <button class="filter-btn">Date</button>
+            <button class="filter-btn">Type</button>
+            <button class="filter-btn">Sort</button>
+        </div>
+
+    <div class="document-grid">
+        {% for note in notes %}
+            <div class="document-card">
+                <div class="document-preview">📄</div>
+                <h3><a href="{% url 'note_detail' pk=note.pk %}">{{ note.title }}</a></h3>
+                <p>Last updated: {{ note.updated_at|date:"M d, Y" }}</p>
+            </div>
+        {% empty %}
+            <p>No notes found.</p>
+        {% endfor %}
+    </div>
+    
+    </main>
+    {% endblock %}
+</body>
+</html>
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let filterType = this.getAttribute("data-filter");
+
+            Swal.fire({
+                title: `Filter by ${filterType.charAt(0).toUpperCase() + filterType.slice(1)}`,
+                input: "text",
+                inputPlaceholder: `Enter ${filterType}...`,
+                showCancelButton: true,
+                confirmButtonText: "Apply",
+                background: "#222",
+                color: "#FFF",
+                confirmButtonColor: "#4CAF50",
+                cancelButtonColor: "#ff4d4d"
+            }).then((result) => {
+                if (result.isConfirmed && result.value.trim() !== "") {
+                    applyFilter(filterType, result.value.trim());
+                }
+            });
+        });
+    });
+
+    function applyFilter(filterType, filterValue) {
+        fetch(`/notes/filter/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCSRFToken(),  // ✅ Fixed CSRF issue
+            },
+            body: JSON.stringify({
+                filter_type: filterType,
+                filter_value: filterValue
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.querySelector(".received-notes-grid").innerHTML = data.html;
+                Swal.fire({
+                    title: "✅ Filter Applied",
+                    text: `Showing results for "${filterValue}"`,
+                    icon: "success",
+                    background: "#222",
+                    color: "#FFF",
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            } else {
+                Swal.fire({
+                    title: "⚠️ No Results",
+                    text: "Try a different filter.",
+                    icon: "warning",
+                    background: "#222",
+                    color: "#FFF"
+                });
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
+
+    // ✅ Function to get CSRF token dynamically
+    function getCSRFToken() {
+        return document.querySelector("input[name=csrfmiddlewaretoken]").value || "{{ csrf_token }}";
+    }
+});
+</script> -->
+

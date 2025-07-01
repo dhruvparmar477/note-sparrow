@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+/* Main Layout */
+.main-content {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
+}
+
+.page-header h1 {
+    font-size: 32px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    color: #ccc;
+    font-size: 16px;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    background: #1E1E1E;
+    color: #4CAF50;
+    border: 1px solid #333;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: #4CAF50;
+    color: #121212;
+    transform: translateY(-3px);
+}
+
+/* Notes Grid */
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Note Card */
+.document-card {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.document-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 18px rgba(76, 175, 80, 0.4);
+}
+
+.document-preview {
+    font-size: 40px;
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Note Title */
+.document-card h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.document-card h3 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.document-card h3 a:hover {
+    color: #81C784;
+    text-decoration: underline;
+}
+
+/* Last Updated */
+.last-updated {
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+}
+
+/* No Notes Message */
+.no-notes {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    grid-column: 1 / -1;
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .document-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0e0e0e;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Main Layout */
+.main-content {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Hero Header */
+.hero-header {
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a1a, #222222);
+    padding: 50px 20px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-header::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.1), transparent 70%);
+    z-index: 0;
+}
+
+.hero-header h1 {
+    font-size: 36px;
+    z-index: 1;
+    position: relative;
+}
+
+.hero-header h1 span {
+    color: #4CAF50;
+}
+
+.hero-header p {
+    font-size: 16px;
+    color: #ccc;
+    margin-top: 10px;
+    z-index: 1;
+    position: relative;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    background: #1f1f1f;
+    color: #4CAF50;
+    border: 1px solid #333;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease all;
+    cursor: pointer;
+    box-shadow: 0 0 5px transparent;
+}
+
+.filter-btn:hover {
+    background: #4CAF50;
+    color: #0e0e0e;
+    box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50;
+    transform: scale(1.05);
+}
+
+/* Notes Grid */
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 25px;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: 0.3s ease;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.05);
+}
+
+.glass-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Document Preview */
+.document-preview {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+/* Card Title */
+.document-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.document-card h3 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.document-card h3 a:hover {
+    color: #81C784;
+    text-decoration: underline;
+}
+
+/* Last Updated */
+.last-updated {
+    font-size: 13px;
+    color: #aaaaaa;
+}
+
+/* Empty Message */
+.no-notes {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .document-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-header h1 {
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,108 @@
+{% extends 'notes/common/layout.html' %}
+{% block content %}
+<div class="main-content">
+    <div class="note-container">
+        <h2>📝 Submit Your Feedback</h2>
+
+<!--         {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} -->
+
+        <form method="post" action="{% url 'feedback_store' %}">
+            {% csrf_token %}
+            
+            <label for="rating">⭐ Rating</label>
+            <select id="rating" name="rating" required>
+                <option value="">Select Rating</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+
+            <label for="comment">💬 Comment</label>
+            <textarea id="comment" name="comment" placeholder="Write your feedback..." required></textarea>
+
+            <button type="submit" class="btn submit">🚀 Submit Feedback</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .note-container {
+        background: #1E1E1E;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 50%;
+        margin: auto;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    label {
+        display: block;
+        font-size: 16px;
+        margin-top: 10px;
+        text-align: left;
+        color: #ccc;
+    }
+
+    select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background: #222;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .btn.submit {
+        background: #4CAF50;
+        padding: 12px;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .btn.submit:hover {
+        background: #66BB6A;
+    }
+
+    .messages {
+        list-style: none;
+        padding: 0;
+    }
+
+    .messages li {
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .success {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .error {
+        background: #FF5252;
+        color: white;
+    }
+</style>
+{% endblock %}

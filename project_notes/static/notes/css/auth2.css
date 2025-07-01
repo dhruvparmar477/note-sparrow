@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #232946, #1f2235);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e0e0e0;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.register-wrapper {
+    width: 100%;
+    max-width: 540px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.register-box {
+    background: rgba(30, 30, 45, 0.9);
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.3s ease;
+}
+
+.brand {
+    text-align: center;
+    font-size: 30px;
+    color: #4CAF50; /* Green accent */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.register-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-row {
+    display: flex;
+    gap: 12px;
+}
+
+.name-row input {
+    flex: 1;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    padding: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #2e2e3e;
+    color: #e0e0e0;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+input:focus {
+    border-color: #007BFF; /* Blue border on focus */
+    background-color: #3a3a50;
+    box-shadow: 0 0 6px #007BFF;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #4CAF50, #007BFF); /* Green to blue gradient */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px #4CAF50;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #cfcfcf;
+}
+
+.login-link a {
+    color: #007BFF;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.login-link a:hover {
+    color: #4CAF50;
+    text-decoration: underline;
+}
+
+.error {
+    color: #f87171;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+}

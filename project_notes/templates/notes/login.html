@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Notes Sparrow</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/css/auth2.css' %}">
+</head>
+<body>
+
+<div class="register-wrapper">
+    <div class="register-box">
+        <div class="brand">Notes Sparrow</div>
+        <h2>Welcome back</h2>
+
+<!--         {% for message in messages %}
+            <p class="error">{{ message }}</p>
+        {% endfor %} -->
+
+        <form method="POST" action="{% url 'login_check' %}">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Enter Username" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
+
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+                <input type="checkbox" name="remember" id="remember" style="margin: 0;">
+                <label for="remember" style="font-size: 14px; color: #555;">Remember me</label>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="login-link">
+            Don't have an account? <a href="{% url 'register' %}">Register</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

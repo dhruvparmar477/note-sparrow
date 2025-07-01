@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/css/style.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Notes Sparrow</div>
+        <ul>
+            <li><a href="#">🏠 Home</a></li>
+            <li><a href="#">📊 Analytics</a></li>
+            <li><a href="#">📁 Reports</a></li>
+            <li><a href="#">⚙️ Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Welcome to Your Dashboard</h1>
+        </header>
+
+        <section class="cards">
+            <div class="card">
+                <h3>👥 Users</h3>
+                <p>1,245</p>
+            </div>
+            <div class="card">
+                <h3>💰 Revenue</h3>
+                <p>$50,000</p>
+            </div>
+            <div class="card">
+                <h3>🛒 Sales</h3>
+                <p>350</p>
+            </div>
+            <div class="card">
+                <h3>💬 Feedback</h3>
+                <p>120</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{% extends 'notes/common/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+    <div class="note-container">
+        <h2 class="note-title">Delete Note</h2>
+        <p class="note-date">Are you sure you want to delete this note?</p>
+
+        <!-- Display plain text content -->
+        <div class="note-content">
+            <p>{{ plain_text_content }}</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn delete">🗑️ Confirm Delete</button>
+            <a href="{% url 'note_detail' note.pk %}" class="btn cancel">❌ Cancel</a>
+        </form>
+    </div>
+</div>
+
+
+<style>
+    .note-container {
+        background: #1E1E1E;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .note-preview {
+        background: #222;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .delete {
+        background: #FF5252;
+        color: white;
+        border: none;
+    }
+
+    .delete:hover {
+        background: #D32F2F;
+    }
+
+    .cancel {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .cancel:hover {
+        background: #388E3C;
+    }
+</style>
+{% endblock %}

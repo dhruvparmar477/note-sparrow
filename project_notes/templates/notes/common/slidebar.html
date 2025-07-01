@@ -1,0 +1,64 @@
+<!-- <aside class="sidebar"> -->
+    <!-- <h2>📂 Notes Sparrow</h2> -->
+    <!-- <ul> -->
+        <!-- <a href="/index"><li><i class="fas fa-folder"></i> All Documents</li></a> -->
+<!--         <li><i class="fas fa-star"></i> Starred</li>
+        <li><i class="fas fa-tags"></i> Tags</li>
+        <li><i class="fas fa-clock"></i> Recent Files</li>
+        <li><i class="fas fa-share"></i> Shared</li>
+        <li><i class="fas fa-cog"></i> Settings</li> -->
+    <!-- </ul> -->
+
+    <!-- Create New Note Button -->
+<!--     <a href="/note" class="create-note-btn">
+        <i class="fas fa-plus"></i> Create New Note
+    </a>
+</aside>
+ -->
+
+<aside class="sidebar">
+    <h2>📂 Notes Sparrow</h2>
+    <ul>
+        <a href="{% url 'index' %}"><li><i class="fas fa-folder"></i> All Documents</li></a>
+        <a href="{% url 'inbox' %}"><li><i class="fas fa-folder"></i> Inbox</li></a>
+        <a href="{% url 'sent_notes' %}"><li><i class="fas fa-folder"></i> Sent Notes</li></a>
+        <a href="{% url 'update_profile' %}"><li><i class="fas fa-folder"></i> Update Profile</li></a>
+        <a href="{% url 'update_password' %}"><li><i class="fas fa-folder"></i> Edit Password</li></a>
+        <a href="{% url 'feedback' %}"><li><i class="fas fa-sign-out"></i> Feedback</li></a>
+        <a href="{% url 'logout' %}"><li><i class="fas fa-sign-out"></i>Logout</li></a>
+    </ul>
+
+    <!-- Create New Note Button -->
+    <a href="{% url 'create_note' %}" class="create-note-btn">
+        <i class="fas fa-plus"></i> Create New Note
+    </a>
+
+
+    <!-- AI Generate Note -->
+    <a href="{% url 'generate_note' %}" class="ai-note-btn">
+        🅰️🅸  Sparrow AI
+
+    </a>
+</aside>
+
+
+
+<style>
+    .ai-note-btn {
+        width: 100%;
+        padding: 12px;
+        background: #ff9800;
+        color: white;
+        text-align: center;
+        border-radius: 5px;
+        font-weight: 600;
+        display: block;
+        margin-top: 10px;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .ai-note-btn:hover {
+        background: #f57c00;
+        transform: scale(1.05);
+    }
+</style>

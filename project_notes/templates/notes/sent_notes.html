@@ -1,0 +1,74 @@
+{% extends 'notes/common/layout.html' %}
+
+{% block content %}
+<style>
+    /* Main container */
+    .sent-notes-container {
+        max-width: 900px;
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: var(--bg-color, #1E1E1E);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Heading styling */
+    h2 {
+        color: var(--primary-color, #4CAF50);
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    /* Grid container */
+    .sent-notes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+        padding: 0;
+    }
+
+    /* Individual note card */
+    .sent-note-item {
+        background: var(--card-bg, #222);
+        padding: 15px;
+        border-radius: 8px;
+        color: var(--text-color, #FFF);
+        border-left: 5px solid var(--primary-color, #4CAF50);
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    /* Hover effect */
+    .sent-note-item:hover {
+        transform: scale(1.05);
+    }
+
+    /* No notes message */
+    .no-notes {
+        color: var(--text-muted, #999);
+        text-align: center;
+        font-style: italic;
+        grid-column: span 2;
+    }
+</style>
+<br>
+<div class="sent-notes-container">
+    <h2>📤 Sent Notes</h2>
+
+    {% if sent_notes %}
+        <div class="sent-notes-grid">
+            {% for sent_note in sent_notes %}
+                <div class="sent-note-item">
+                    <strong>To:</strong> {{ sent_note.receiver.username }}<br>
+                    {{ sent_note.note.title }}<br>
+                    <small>Sent on: {{ sent_note.sent_at|date:"M d, Y h:i A" }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-notes">No sent notes.</p>
+    {% endif %}
+</div>
+{% endblock %}

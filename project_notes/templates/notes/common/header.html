@@ -1,0 +1,108 @@
+<!-- <header>
+    <form method="GET" action="{% url 'index' %}" class="search-form">
+        <input type="text" class="search-bar" placeholder="Search documents..." value="{{ query }}">
+    </form>
+    
+    <button class="theme-toggle">🌙</button>
+    <i class="fas fa-user-circle user-icon"></i>
+</header> -->
+
+
+<!-- <header>
+    <form method="GET" action="{% url 'index' %}" class="search-form">
+        <input type="text" name="query" class="search-bar" placeholder="Search documents..." value="{{ query }}">
+        <button type="submit" 
+            style="background: transparent; color: white; border: none; padding: 10px 14px; 
+                   border-radius: 8px; cursor: pointer; font-size: 20px; 
+                   transition: background 0.3s ease, transform 0.2s ease;">
+            🔍
+        </button>
+    </form>
+    <button class="theme-toggle">🌙</button>
+    <i class="fas fa-user-circle user-icon"></i>
+</header> -->
+
+<header>
+    <form method="GET" action="{% url 'index' %}" class="search-form">
+        <input type="text" name="query" class="search-bar" placeholder="Search documents..." value="{{ query }}">
+        <button type="submit" style="padding: 10px; background: transparent; border: none; color: white; cursor: pointer">🔍</button>
+    </form>
+    
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <i class="fas fa-user-circle user-icon"></i>
+</header>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".search-bar").on("keyup", function () {
+            let query = $(this).val().trim();
+            if (query.length === 0) {
+                $(".document-grid").html("<p>Type to search notes...</p>");
+                return;
+            }
+
+            $.ajax({
+                url: "{% url 'search_notes' %}",
+                data: {query: query},
+                dataType: "json",
+                success: function (data) {
+                    let results = "";
+                    if (data.notes.length > 0) {
+                        data.notes.forEach(note => {
+                            results += `
+                                <div class="document-card">
+                                    <div class="document-preview">📄</div>
+                                    <h3><a href="/note/${note.id}/">${note.title}</a></h3>
+                                    <p>Last updated: ${note.updated_at}</p>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        results = "<p>No notes found.</p>";
+                    }
+                    $(".document-grid").html(results);
+                },
+                error: function () {
+                    console.log("Error fetching search results");
+                }
+            });
+        });
+    });
+</script>
+
+<!-- <script>
+    // Function to toggle between Dark Mode and Royal Light Mode
+    function toggleTheme() {
+        let body = document.body;
+        let isLightMode = body.classList.toggle("light-mode");
+
+        // Change button icon
+        let themeToggleBtn = document.querySelector(".theme-toggle");
+        themeToggleBtn.textContent = isLightMode ? "☀️" : "🌙";
+
+        // Save user preference in localStorage
+        localStorage.setItem("theme", isLightMode ? "light" : "dark");
+    }
+
+    // Load user preference on page load
+    window.onload = function() {
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light-mode");
+            document.querySelector(".theme-toggle").textContent = "☀️";
+        }
+    };
+</script> -->
+
+
+<!--  <header>
+    <form method="GET" action="{% url 'index' %}">
+        <input type="text" class="search-bar" name="q" placeholder="Search documents..." value="{{ query }}">
+    </form>
+    <button class="theme-toggle">🌙</button>
+    <i class="fas fa-user-circle user-icon"></i>
+</header>
+ -->

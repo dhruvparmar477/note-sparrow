@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* General Styles */
+body {
+    display: flex;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    padding: 0;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #1E1E1E;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar ul li:hover {
+    background: #4CAF50;
+    border-radius: 5px;
+    transform: translateX(5px);
+}
+
+/* Create New Note Button */
+.create-note-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.create-note-btn:hover {
+    background: #66BB6A;
+    transform: scale(1.05);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1E1E1E;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Search Form */
+.search-form {
+    flex-grow: 1;
+    display: flex;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 100%;
+    max-width: 700px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    font-size: 18px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar:hover, 
+.search-bar:focus {
+    background: #333;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 6px 8px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    color: white;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg);
+}
+
+/* User Icon */
+.user-icon {
+    font-size: 22px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    color: white;
+    margin-left: 40px;
+    flex-shrink: 0;
+}
+
+.user-icon:hover {
+    color: #4CAF50;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: flex-start; /* Align to the left */
+}
+
+
+/* Filter Buttons */
+.filter-btn {
+    background: #2A2A2A;
+    color: #4CAF50;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: #4CAF50;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Document Grid */
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* Document Card */
+.document-card {
+    background: #1E1E1E;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.document-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(76, 175, 80, 0.5);
+}
+
+/* Document Preview */
+.document-preview {
+    font-size: 40px;
+    background: #333;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Tags */
+.tags {
+    margin: 10px 0;
+}
+
+.tag {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    margin: 2px;
+    display: inline-block;
+}
+
+.green { background: #4CAF50; }
+.blue { background: #007BFF; }
+.orange { background: #FFA500; }
+.purple { background: #9C27B0; }
+
+/* Buttons */
+.actions {
+    margin-top: 10px;
+}
+
+/* Button Hover Effects */
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    margin: 5px;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+    color: #4CAF50;
+}
+
+.delete:hover {
+    color: #FF5252;
+}
+
+/* Note Container */
+.note-container {
+    background: #1E1E1E;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Note Title */
+.note-title {
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    background: none;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    transition: border 0.3s ease;
+}
+
+.note-title:focus {
+    outline: none;
+    border-bottom: 2px solid #4CAF50;
+}
+
+/* Note Content */
+.note-content {
+    flex-grow: 1;
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    min-height: 200px;
+    resize: vertical;
+    transition: background 0.3s ease;
+}
+
+.note-content:focus {
+    outline: none;
+    background: #333;
+}
+
+/* Image Upload */
+.image-upload {
+    width: 200px;
+    text-align: center;
+}
+
+.upload-btn {
+    background: #4CAF50;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+    transition: background 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: #66BB6A;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .document-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+
+/* Center the note form properly */
+.note-container {
+    width: 60%;
+    margin: 50px auto; /* Centers horizontally */
+    background-color: #FDF6E3; /* Light cream for Light Mode */
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #9C6B3D;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Make the title and input fields bigger */
+.note-container h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #9C6B3D; /* Dark brown */
+    margin-bottom: 20px;
+}
+
+/* Inputs and textarea styling */
+.note-container input,
+.note-container textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #9C6B3D;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #FAEED1;
+    color: #4B3621;
+}
+
+/* Fix the textarea height */
+.note-container textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Button styling */
+.note-container .btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.note-container .btn-save {
+    background-color: #9C6B3D;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.note-container .btn-save:hover {
+    background-color: #8A5A2C;
+}
+
+.note-container .btn-cancel {
+    background-color: #CC5A5A;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.note-container .btn-cancel:hover {
+    background-color: #B04545;
+}
+
+@media (prefers-color-scheme: dark) {
+    .note-container {
+        background-color: #1E1E1E; /* Dark background */
+        border: 2px solid #6D4C41;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .note-container h2 {
+        color: #D7CCC8; /* Light brown */
+    }
+
+    .note-container input,
+    .note-container textarea {
+        background-color: #2E2E2E;
+        color: #E0E0E0;
+        border: 1px solid #6D4C41;
+    }
+
+    .note-container .btn-save {
+        background-color: #6D4C41;
+    }
+
+    .note-container .btn-save:hover {
+        background-color: #5D4037;
+    }
+
+    .note-container .btn-cancel {
+        background-color: #B71C1C;
+    }
+
+    .note-container .btn-cancel:hover {
+        background-color: #8B0000;
+    }
+}
+
+/* --- Enhancements --- */
+
+/* Slight background gradient */
+body {
+    background: linear-gradient(to right, #121212, #1a1a1a);
+}
+
+/* Sidebar shadow and gradient */
+.sidebar {
+    background: linear-gradient(to bottom, #1E1E1E, #292929);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Enhanced sidebar link hover */
+.sidebar ul li:hover {
+    background: linear-gradient(to right, #4CAF50, #66BB6A);
+    color: #fff;
+}
+
+/* Card glow on hover */
+.document-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(102, 255, 153, 0.4);
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Header styling tweak */
+header {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to right, #1E1E1E, #2C2C2C);
+}
+
+/* Better button colors */
+.filter-btn {
+    background: #2C2C2C;
+    color: #76FF03;
+}
+
+.filter-btn:hover {
+    background: #76FF03;
+    color: #111;
+}
+
+/* Improve title spacing and weight */
+.sidebar h2, header h1 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Optional entrance animation for cards */
+.document-card {
+    animation: fadeIn 0.6s ease-in-out both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

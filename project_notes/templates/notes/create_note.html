@@ -1,0 +1,31 @@
+{% extends 'notes/common/layout_without_header.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="note-container">
+    <h2>Create New Note</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <input type="text" name="title" placeholder="Enter title..." required>
+        
+        <textarea name="content" placeholder="Write your notes here..." required></textarea>
+        
+        <div class="btn-container">
+            <button type="submit" class="btn-save">
+                <i class="fas fa-save"></i> Save
+            </button>
+            
+            <button type="button" class="btn-cancel">
+                <i class="fas fa-times"></i> Cancel
+            </button>
+        </div>
+    </form>
+</div>
+
+
+<!-- JavaScript -->
+<script src="{% static 'notes/js/note_script.js' %}"></script>
+{% endblock %}

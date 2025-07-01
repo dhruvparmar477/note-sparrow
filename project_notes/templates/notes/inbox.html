@@ -1,0 +1,194 @@
+{% extends 'notes/common/layout.html' %}
+
+{% block content %}
+<!-- ✅ SweetAlert2 (For Beautiful Popups) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    /* Main container */
+    .inbox-container {
+        max-width: 900px;
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: var(--bg-color, #1E1E1E);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Heading styling */
+    h2 {
+        color: var(--primary-color, #4CAF50);
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    /* Grid container */
+    .received-notes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+        padding: 0;
+    }
+
+    /* Individual note card */
+    .received-note-item {
+        background: var(--card-bg, #222);
+        padding: 15px;
+        border-radius: 8px;
+        color: var(--text-color, #FFF);
+        border-left: 5px solid var(--primary-color, #4CAF50);
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* Hover effect */
+    .received-note-item:hover {
+        transform: scale(1.05);
+    }
+
+    /* View Note Link */
+    .view-note {
+        color: var(--primary-color, #4CAF50);
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .view-note:hover {
+        text-decoration: underline;
+    }
+
+    /* Delete button */
+    .delete-btn {
+        background: #ff4d4d;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 8px;
+        text-align: center;
+        display: inline-block;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background 0.3s ease, transform 0.2s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Hover effect */
+    .delete-btn:hover {
+        background: #e63946;
+        transform: scale(1.05);
+    }
+
+    /* Optional: Add an icon for a cleaner look */
+    .delete-btn::before {
+        content: "🗑️ ";
+        font-size: 14px;
+        margin-right: 5px;
+    }
+
+    /* No notes message */
+    .no-notes {
+        color: var(--text-muted, #999);
+        text-align: center;
+        font-style: italic;
+        grid-column: span 2;
+    }
+</style>
+
+<!-- ✅ JavaScript for SweetAlert Delete Confirmation -->
+<!-- ✅ SweetAlert2 (For Beautiful Popups) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function deleteNote(noteId) {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to recover this note!",
+        icon: "warning",
+        background: "#1E1E1E",  // Dark Background
+        color: "#FFF",  // White Text
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "Cancel",
+        showCancelButton: true,
+        customClass: {
+            popup: "swal2-dark-popup",
+            title: "swal2-dark-title",
+            confirmButton: "swal2-dark-confirm",
+            cancelButton: "swal2-dark-cancel",
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/notes/delete-received-note/${noteId}/`, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your note has been deleted.",
+                        icon: "success",
+                        background: "#1E1E1E",
+                        color: "#FFF",
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Error",
+                        text: "Could not delete the note.",
+                        icon: "error",
+                        background: "#1E1E1E",
+                        color: "#FFF"
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                Swal.fire({
+                    title: "Error",
+                    text: "Something went wrong!",
+                    icon: "error",
+                    background: "#1E1E1E",
+                    color: "#FFF"
+                });
+            });
+        }
+    });
+}
+</script>
+
+<br>
+<div class="inbox-container">
+    <h2>📥 Inbox</h2>
+
+    {% if received_notes %}
+        <div class="received-notes-grid">
+            {% for sent_note in received_notes %}
+                <div class="received-note-item">
+                    <strong>From:</strong> {{ sent_note.sender.username }}<br>
+                    <a href="{% url 'view_received_note' sent_note.pk %}" class="view-note">
+                        {{ sent_note.note.title }}
+                    </a><br>
+                    <small>Received on: {{ sent_note.sent_at|date:"M d, Y h:i A" }}</small>
+                    <a href="#" class="delete-btn" onclick="deleteNote({{ sent_note.pk }})"> Delete</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-notes">No received notes.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

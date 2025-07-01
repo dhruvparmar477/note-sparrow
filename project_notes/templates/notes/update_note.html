@@ -1,0 +1,30 @@
+{% extends 'notes/common/layout_without_header.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="main-content">
+    <div class="note-container">
+        <h2 class="note-title">Edit Note</h2>
+
+        <form method="POST" action="{% url 'update_note' note.pk %}">
+            {% csrf_token %}
+
+            <!-- Title Input -->
+            <input type="text" name="title" class="note-title-input" value="{{ note.title }}" placeholder="Enter title..." required>
+
+            <!-- Content Textarea -->
+            <!-- <textarea class="note-content" name="content" placeholder="Write your notes here..." required>{{ note.content }}</textarea> -->
+            <textarea class="note-content" name="content" placeholder="Write your notes here..." required>{{ note.content|striptags }}</textarea>
+            <!-- Note Actions -->
+            <div class="note-actions">
+                <button type="submit" class="btn save">💾 Save</button>
+                <a href="{% url 'note_detail' note.pk %}" class="btn cancel">❌ Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="{% static 'notes/js/note_script.js' %}"></script>
+{% endblock %}
