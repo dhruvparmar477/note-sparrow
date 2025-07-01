@@ -21,7 +21,7 @@ NoteSparrow is a Django-based web application that allows users to create, manag
 Follow these steps to set up the project on your local machine:
 
 #1. Clone the repository
-   git clone <your-repo-url>
+   git clone https://github.com/dhruvparmar477/note-sparrow.git
    cd note-sparrow
 
 #2. Create and activate a virtual environment
