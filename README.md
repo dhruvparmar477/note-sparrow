@@ -20,17 +20,17 @@ NoteSparrow is a Django-based web application that allows users to create, manag
 
 Follow these steps to set up the project on your local machine:
 
-#1. Clone the repository
+1. Clone the repository
    git clone https://github.com/dhruvparmar477/note-sparrow.git
    cd note-sparrow
 
-#2. Create and activate a virtual environment
+2. Create and activate a virtual environment
    python -m venv VE
    cd VE/Scripts
    activate
    cd ../..
 
-#3. Install project dependencies
+3. Install project dependencies
    pip install django
    pip install mysqlclient
    pip install python-dotenv
@@ -39,17 +39,17 @@ Follow these steps to set up the project on your local machine:
    pip install django-markdownify
    pip install google-generativeai
 
-#4. Navigate to the project directory
+4. Navigate to the project directory
    cd project_notes
 
-#5. Create a superuser (for Django admin)
+5. Create a superuser (for Django admin)
    python manage.py createsuperuser
 
-#6. Run the development server
+6. Run the development server
    python manage.py runserver
 
 
-Now open http://127.0.0.1:8000 in your browser to view the app.
+Now open http://127.0.0.1:8000/notes/login in your browser to view the app.
 
 
 Environment Variables
