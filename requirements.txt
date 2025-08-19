@@ -6,3 +6,4 @@ markdownify
 django-markdownify
 google-generativeai
 gunicorn
+whitenoise
