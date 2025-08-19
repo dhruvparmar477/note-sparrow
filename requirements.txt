@@ -1,0 +1,8 @@
+django
+mysqlclient
+python-dotenv
+markdown
+markdownify
+django-markdownify
+google-generativeai
+gunicorn
